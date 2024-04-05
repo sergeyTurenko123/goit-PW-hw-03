@@ -1,6 +1,6 @@
 from pathlib import Path
 import shutil
-from threading import Thread
+import concurrent.futures
 
 def shutil_copy(src, dcr):
     src = Path(src)
@@ -16,6 +16,5 @@ def shutil_copy(src, dcr):
             shutil.copy(item, Path(dcr/"svg"))
 if __name__ == "__main__":
 
-    thread = Thread(target= shutil_copy, args=("picture","dist"))
-    thread.start()
-    
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+        results = executor.submit(shutil_copy, "picture", "dist")
