@@ -18,4 +18,4 @@ if __name__ == "__main__":
 
     thread = Thread(target= shutil_copy, args=("picture","dist"))
     thread.start()
-    # shutil_copy("picture", "dist")
+    
