@@ -1,13 +1,22 @@
-def factorize(*number):
-    i = 1
+from multiprocessing import Pool, cpu_count
+import time
+
+
+def factorize(*args):
+    start = time.time()
+    n = 1
     numbers = []
-    for n in number:
-        while i <=n:
-            if n % i == 0:
-                numbers.append(i)
-            i+=1
-    print(numbers)
+    for i in args:
+        while n <= i:
+            if i % n == 0:
+                numbers.append(n)
+            n+=1
+    end = time.time() - start
+    print (numbers, end)
 
-        # raise NotImplementedError() # Remove after implementation
+if __name__ == "__main__":
 
-factorize(1000000000)
+    cpu_count = cpu_count()
+    pool = Pool(cpu_count)
+    pool.map(factorize, (15, 1000000, 100000))   
+    
