@@ -16,7 +16,7 @@ def factorize(*args):
 
 if __name__ == "__main__":
 
-    cpu_count = cpu_count()
-    pool = Pool(cpu_count)
-    pool.map(factorize, (1500000, 1000000, 100000))   
+    # cpu_count = cpu_count()
+    # pool = Pool(cpu_count())
+    Pool(cpu_count()).map(factorize, (1500000, 1000000, 100000000))   
     
